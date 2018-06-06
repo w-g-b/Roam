@@ -6,15 +6,17 @@ public class DoorController : MonoBehaviour
 {
     private Animator animator;
     private bool isDoorOpen = false;
+    public AudioClip openDoorClip;
+    public AudioClip closeDoorClip;
 
-    void Awake()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
     public void OnClickDoor()
     {
-        if (isDoorOpen==false)
+        if (isDoorOpen == false)
         {
             isDoorOpen = true;
             OpenDoor();
@@ -28,12 +30,14 @@ public class DoorController : MonoBehaviour
 
     private void OpenDoor()
     {
+        AudioSource.PlayClipAtPoint(openDoorClip, transform.position);
         animator.SetBool("isPlayClose", false);
         animator.SetBool("isPlayOpen", true);
     }
 
     private void CloseDoor()
     {
+        AudioSource.PlayClipAtPoint(closeDoorClip, transform.position);
         animator.SetBool("isPlayOpen", false);
         animator.SetBool("isPlayClose", true);
     }

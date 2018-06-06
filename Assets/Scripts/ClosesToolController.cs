@@ -16,5 +16,6 @@ public class ClosesToolController : MonoBehaviour
     {
         if (!audioSource.isPlaying)
             audioSource.Play();
+       
     }
 }
